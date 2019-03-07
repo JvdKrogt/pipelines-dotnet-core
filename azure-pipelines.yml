@@ -29,3 +29,9 @@ steps:
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
     
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    azureSubscription: 'SPN for DevOps with permissions on Res.Group RG-CB-joris.vander.krogt'
+    WebAppName: 'IAMDemoAppJK'
+    Package: $(System.ArtifactsDirectory)/**/*.zip
+    
